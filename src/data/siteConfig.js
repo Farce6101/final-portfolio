@@ -20,14 +20,7 @@ const siteConfig = {
   // About section
   about: {
     tagline: "I build things for the web",
-    description: `I'm a software developer specializing in building exceptional digital experiences. 
-    Currently, I'm focused on building accessible, human-centered products at Company Group Name.
-    
-    My background in computer science and my passion for design allows me to create products 
-    that are not only functional but also aesthetically pleasing and user-friendly.
-    
-    When I'm not coding, you can find me exploring new hiking trails, experimenting with 
-    new recipes in the kitchen, or reading science fiction novels.`,
+    description: `I'm Faustine Delica, your go-to creative and web developer. My passion lies in building beautiful and functional digital experiences. While I'm still growing in my coding journey, I am eager to learn and push my limits to craft designs and applications that make an impact. My goal is to continuously evolve, enhance my skills, and create meaningful connections through my work.`,
     skills: [
       "JavaScript (ES6+)",
       "Html",
