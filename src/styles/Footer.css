@@ -1,0 +1,210 @@
+.footer {
+  background-color: var(--secondary-bg);
+  padding: var(--space-xl) 0;
+  margin-top: var(--space-xl);
+  border-top: 1px solid var(--border-color);
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+
+.footer-logo h3 {
+  color: var(--primary-color);
+  font-family: var(--font-heading);
+  margin-bottom: var(--space-sm);
+}
+
+.footer-logo p {
+  color: var(--text-secondary);
+  margin-bottom: 0;
+}
+
+.footer-links h4,
+.footer-social h4 {
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  margin-bottom: var(--space-md);
+  font-size: 1.2rem;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: var(--space-sm);
+}
+
+.footer-links a {
+  color: var(--text-secondary);
+  transition: color var(--transition-fast);
+  display: inline-block;
+  position: relative;
+}
+
+.footer-links a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: var(--primary-color);
+  transition: width var(--transition-normal);
+}
+
+.footer-links a:hover {
+  color: var(--primary-color);
+}
+
+.footer-links a:hover::after {
+  width: 100%;
+}
+
+.social-icons {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.social-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-rounded);
+  background-color: var(--border-color);
+  color: var(--text-primary);
+  transition: all var(--transition-fast);
+}
+
+.social-icons a:hover {
+  background-color: var(--primary-color);
+  color: white;
+  transform: translateY(-3px);
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--border-color);
+  padding-top: var(--space-md);
+  margin-top: var(--space-lg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+.footer-bottom p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.scroll-to-top {
+  position: fixed !important;
+  bottom: 2rem !important;
+  right: 2rem !important;
+  width: 45px !important;
+  height: 45px !important;
+  background-color: var(--primary-color) !important;
+  color: white !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  border: none !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+  z-index: 9999 !important; /* High z-index to ensure visibility */
+  opacity: 1 !important;
+  font-size: 1.2rem !important;
+  transition: background-color 0.3s, transform 0.3s !important;
+}
+
+.scroll-to-top:hover {
+  background-color: var(--secondary-color) !important;
+  transform: translateY(-5px) !important;
+}
+
+@media (max-width: 576px) {
+  .scroll-to-top {
+    bottom: 1rem !important;
+    right: 1rem !important;
+    width: 40px !important;
+    height: 40px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .scroll-to-top {
+    bottom: var(--space-md);
+    right: var(--space-md);
+  }
+}
+/* Add this to your Footer.css or create a separate ScrollToTop.css */
+
+.scroll-to-top {
+  position: fixed !important;
+  bottom: 2rem !important;
+  right: 2rem !important;
+  width: 45px !important;
+  height: 45px !important;
+  background-color: var(--primary-color) !important;
+  color: white !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  border: none !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+  z-index: 9999 !important;
+  font-size: 1.2rem !important;
+  transition: all 0.3s ease !important;
+
+  /* Add these new properties */
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transform: scale(0.8) !important;
+}
+
+.scroll-to-top.visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: scale(1) !important;
+}
+
+.scroll-to-top:hover {
+  background-color: var(--secondary-color) !important;
+  transform: translateY(-5px) scale(1.05) !important;
+}
+
+@media (max-width: 576px) {
+  .scroll-to-top {
+    bottom: 1rem !important;
+    right: 1rem !important;
+    width: 40px !important;
+    height: 40px !important;
+  }
+}

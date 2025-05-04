@@ -1,0 +1,91 @@
+:root {
+  /* Core color palette - More distinctive yet harmonious */
+  --primary-bg: #f7f3ee;
+  --secondary-bg: #fcfaf7;
+  --primary-color: #c7917f;
+  --secondary-color: #a45a48;
+  --accent-color-1: #e8c4b8;
+  --accent-color-2: #4a6670;
+  --accent-color-3: #8ca891;
+  --text-primary: #483c34;
+  --text-secondary: #82746a;
+  --text-light: #d9cbc1;
+  --border-color: rgba(199, 145, 127, 0.2);
+
+  /* Enhanced spacing system */
+  --space-3xs: clamp(0.25rem, 0.25vw, 0.3rem);
+  --space-2xs: clamp(0.5rem, 0.5vw, 0.6rem);
+  --space-xs: clamp(0.75rem, 0.75vw, 0.9rem);
+  --space-sm: clamp(1rem, 1vw, 1.2rem);
+  --space-md: clamp(1.5rem, 1.5vw, 1.8rem);
+  --space-lg: clamp(2rem, 2vw, 2.4rem);
+  --space-xl: clamp(3rem, 3vw, 3.6rem);
+  --space-2xl: clamp(4rem, 4vw, 4.8rem);
+  --space-3xl: clamp(6rem, 6vw, 7.2rem);
+
+  /* Typography */
+  --font-main: "Inter", sans-serif;
+  --font-heading: "Playfair Display", serif;
+  --font-mono: "Source Code Pro", monospace;
+
+  /* Font sizes */
+  --text-xs: clamp(0.75rem, 0.75vw, 0.85rem);
+  --text-sm: clamp(0.875rem, 0.875vw, 1rem);
+  --text-base: clamp(1rem, 1vw, 1.2rem);
+  --text-md: clamp(1.25rem, 1.25vw, 1.5rem);
+  --text-lg: clamp(1.5rem, 1.5vw, 1.8rem);
+  --text-xl: clamp(2rem, 2vw, 2.4rem);
+  --text-2xl: clamp(2.5rem, 2.5vw, 3rem);
+  --text-3xl: clamp(3rem, 3vw, 3.6rem);
+  --text-4xl: clamp(3.5rem, 3.5vw, 4.2rem);
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  --transition-bounce: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  /* Borders */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-rounded: 50%;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(72, 60, 52, 0.05);
+  --shadow-md: 0 4px 16px rgba(72, 60, 52, 0.08);
+  --shadow-lg: 0 8px 30px rgba(72, 60, 52, 0.12);
+  --shadow-focus: 0 0 0 3px rgba(199, 145, 127, 0.25);
+
+  /* Layout */
+  --sidebar-width: 70px;
+  --sidebar-extended-width: 240px;
+  --max-content-width: 1400px;
+  --header-height: 70px;
+
+  /* Z-index layers */
+  --z-below: -1;
+  --z-normal: 1;
+  --z-above: 10;
+  --z-modal: 100;
+  --z-toast: 500;
+  --z-tooltip: 1000;
+
+  /* Common gradients */
+  --gradient-primary: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  --gradient-accent: linear-gradient(
+    135deg,
+    var(--accent-color-1),
+    var(--primary-color)
+  );
+  --gradient-subtle: linear-gradient(
+    135deg,
+    var(--primary-bg),
+    var(--secondary-bg)
+  );
+}
