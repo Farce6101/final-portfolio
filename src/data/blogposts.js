@@ -7,6 +7,28 @@ const blogposts = [
     author: "Faustine Grace Delica",
     category: "Travel",
     thumbnail: "/blog/blog1.jpg",
+    gallery: [
+      {
+        url: "/blog/blog2.jpg",
+        caption: "The historic walls of Intramuros"
+      },
+      {
+        url: "/blog/gallery/fort-santiago.jpg",
+        caption: "Fort Santiago's iconic gate"
+      },
+      {
+        url: "/blog/gallery/san-agustin.jpg",
+        caption: "San Agustin Church's majestic facade"
+      },
+      {
+        url: "/blog/gallery/rizal-park.jpg",
+        caption: "Rizal Park's peaceful atmosphere"
+      },
+      {
+        url: "/blog/gallery/mall-of-asia.jpg",
+        caption: "Sunset view at SM Mall of Asia"
+      }
+    ],
     excerpt: "Our first day on the city tour was a perfect blend of culture, history, and modern-day fun. We began our adventure in Intramuros, the famous Walled City of Manila. Walking along the cobbled streets surrounded by Spanish-era buildings made us feel like we stepped back in time.",
     content: `
       <p>Our first day on the city tour was a perfect blend of culture, history, and modern-day fun. We began our adventure in <strong>Intramuros</strong>, the famous "Walled City" of Manila. Walking along the cobbled streets surrounded by Spanish-era buildings made us feel like we stepped back in time. The atmosphere was peaceful, and every corner had a story to tell.</p>

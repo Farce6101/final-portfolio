@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useParams, useNavigate } from 'react-router-dom';
-import { FaArrowLeft, FaCalendarAlt, FaUser, FaFolder, FaTags, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { FaArrowLeft, FaCalendarAlt, FaUser, FaFolder, FaTags, FaChevronLeft, FaChevronRight, FaTimes } from 'react-icons/fa';
 import blogposts from '../data/blogposts';
 import '../styles/Blog.css';
 
@@ -12,13 +12,24 @@ const BlogPost = () => {
   const [loading, setLoading] = useState(true);
   const [prevPost, setPrevPost] = useState(null);
   const [nextPost, setNextPost] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [carouselImages, setCarouselImages] = useState([]);
 
   useEffect(() => {
     const currentPostIndex = blogposts.findIndex(p => p.slug === slug);
     
     if (currentPostIndex !== -1) {
-      // Set the current post
-      setPost(blogposts[currentPostIndex]);
+      const currentPost = blogposts[currentPostIndex];
+      setPost(currentPost);
+      
+      // Create carousel images array with thumbnail and gallery images
+      const images = [currentPost.thumbnail];
+      if (currentPost.gallery) {
+        images.push(...currentPost.gallery.map(img => img.url));
+      }
+      setCarouselImages(images);
       
       // Get previous post (if exists)
       if (currentPostIndex > 0) {
@@ -48,6 +59,28 @@ const BlogPost = () => {
   
   const handleNavigate = (targetSlug) => {
     navigate(`/blog/${targetSlug}`);
+  };
+
+  const openLightbox = (image) => {
+    setSelectedImage(image);
+    setLightboxOpen(true);
+  };
+
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+    setSelectedImage(null);
+  };
+
+  const nextImage = () => {
+    setCurrentImageIndex((prevIndex) => 
+      prevIndex === carouselImages.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prevIndex) => 
+      prevIndex === 0 ? carouselImages.length - 1 : prevIndex - 1
+    );
   };
 
   if (loading) {
@@ -134,14 +167,32 @@ const BlogPost = () => {
               </div>
             </header>
 
-            {post.thumbnail && (
+            {carouselImages.length > 0 && (
               <motion.div 
-                className="blog-post-featured-image"
+                className="blog-post-carousel"
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.3, duration: 0.5 }}
               >
-                <img src={post.thumbnail} alt={post.title} />
+                <div className="carousel-container">
+                  <button className="carousel-button prev" onClick={prevImage}>
+                    <FaChevronLeft />
+                  </button>
+                  <AnimatePresence mode="wait">
+                    <motion.img
+                      key={currentImageIndex}
+                      src={carouselImages[currentImageIndex]}
+                      alt={`${post.title} - Image ${currentImageIndex + 1}`}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  </AnimatePresence>
+                  <button className="carousel-button next" onClick={nextImage}>
+                    <FaChevronRight />
+                  </button>
+                </div>
               </motion.div>
             )}
 
@@ -152,6 +203,50 @@ const BlogPost = () => {
               transition={{ delay: 0.4, duration: 0.5 }}
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
+
+            {post.gallery && post.gallery.length > 0 && (
+              <motion.div 
+                className="blog-post-gallery"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5, duration: 0.5 }}
+              >
+                <h3 className="gallery-title">Photo Gallery</h3>
+                <div className="gallery-grid">
+                  {post.gallery.map((image, index) => (
+                    <motion.div 
+                      key={index}
+                      className="gallery-item"
+                      whileHover={{ scale: 1.02 }}
+                      onClick={() => openLightbox(image)}
+                    >
+                      <img src={image.url} alt={image.caption || `Gallery image ${index + 1}`} />
+                      {image.caption && <p className="gallery-caption">{image.caption}</p>}
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+
+            {lightboxOpen && (
+              <motion.div 
+                className="lightbox"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={closeLightbox}
+              >
+                <button className="lightbox-close" onClick={closeLightbox}>
+                  <FaTimes />
+                </button>
+                <div className="lightbox-content">
+                  <img src={selectedImage.url} alt={selectedImage.caption || 'Gallery image'} />
+                  {selectedImage.caption && (
+                    <p className="lightbox-caption">{selectedImage.caption}</p>
+                  )}
+                </div>
+              </motion.div>
+            )}
 
             {post.tags && post.tags.length > 0 && (
               <motion.div 
