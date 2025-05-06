@@ -10,7 +10,7 @@ const siteConfig = {
   // Social media links
   social: {
     github: "https://github.com/yourusername",
-    linkedin: "https://linkedin.com/in/yourusername",
+    linkedin: "https://www.linkedin.com/in/faustine-grace-delica-36b6b7359?originalSubdomain=ph",
     twitter: "https://twitter.com/yourusername",
     instagram: "https://instagram.com/yourusername",
     dribbble: "https://dribbble.com/yourusername",
